@@ -1,6 +1,6 @@
 # Watcher QA
 
-Standalone human-in-the-loop QA engineering platform. It is deliberately separate from the original Watcher incident demo.
+Human-in-the-loop QA engineering platform for finding bugs, validating fixes, and creating reviewable pull requests.
 
 ## Product flow
 
