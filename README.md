@@ -11,7 +11,38 @@ Standalone human-in-the-loop QA engineering platform. It is deliberately separat
 5. A human approves that exact patch.
 6. Watcher QA creates a branch and pull request; GitHub CI verifies it.
 
-## Local setup
+## Run it on your project now
+
+From this repository, point the QA command at any local Node.js project. Watcher QA runs only the `test`, `lint`, and `build` scripts that the target project's own `package.json` declares. It does not invent shell commands or modify source code.
+
+```bash
+git clone https://github.com/AravindBarfa20/QA-Agent.git
+cd QA-Agent
+npm install
+npm run qa -- /absolute/path/to/your-project
+```
+
+For example, to audit the project in the current folder:
+
+```bash
+npm run qa -- .
+```
+
+The command streams test output and writes an evidence report to:
+
+```text
+/absolute/path/to/your-project/.watcher-qa/latest-report.json
+```
+
+If one check fails, the command exits non-zero but still writes the complete report. The command is deliberately read-only except for that report directory.
+
+For an opt-in AI investigation of a failed report, set your own key only in the terminal session and add `--ai`. The audit evidence is sent to OpenAI with non-persistent API storage; no source code is modified.
+
+```bash
+OPENAI_API_KEY="your-key" npm run qa -- /absolute/path/to/your-project --ai
+```
+
+## Dashboard setup
 
 ```bash
 npm install
